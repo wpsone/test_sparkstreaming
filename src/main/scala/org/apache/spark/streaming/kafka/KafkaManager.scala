@@ -8,6 +8,9 @@ import scala.collection.JavaConverters.mapAsScalaMapConverter
 
 class KafkaManager(val kafkaParams:Map[String,String],
                    val ignoreZKOffsets:Boolean=false) extends Logging {
+  //@trasient 开始是红色的，不要怕，往下敲就可以
+  @transient private val kc = new KafkaCluster(kafkaParams)
+  @transient private val groupId = kafkaParams.get("group.id")
 
 }
 
